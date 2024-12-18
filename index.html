@@ -7,7 +7,10 @@
     <title>Audio Visualiser</title>
   </head>
   <body>
-    <input type="file" accept="audio/*" id="audio" />
+    <div>
+      <input type="file" accept="audio/*" id="audio-input" />
+      <audio controls volume="0.8" id="audio-player"></audio>
+    </div>
     <canvas id="canvas"></canvas>
     <script src="index.js"></script>
   </body>
