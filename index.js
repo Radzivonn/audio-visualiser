@@ -1,4 +1,5 @@
 const audio = document.getElementById('audio-player');
+let audioSource;
 let analyser;
 
 document.getElementById('audio-input').addEventListener('change', (event) => {
@@ -6,11 +7,13 @@ document.getElementById('audio-input').addEventListener('change', (event) => {
   audio.src = URL.createObjectURL(file);
   audio.load();
   audio.play();
-  const audioContext = new AudioContext();
-  const audioSource = audioContext.createMediaElementSource(audio);
-  analyser = audioContext.createAnalyser();
-  audioSource.connect(analyser);
-  analyser.connect(audioContext.destination);
+  if (!audioSource) {
+    const audioContext = new AudioContext();
+    audioSource = audioContext.createMediaElementSource(audio);
+    analyser = audioContext.createAnalyser();
+    audioSource.connect(analyser);
+    analyser.connect(audioContext.destination);
+  }
 });
 
 audio.addEventListener('play', () => {
@@ -26,8 +29,6 @@ function visualize(analyser) {
 
   const frequencyBufferLength = analyser.frequencyBinCount;
   let frequencyData = new Uint8Array(frequencyBufferLength);
-
-  audio.play();
 
   const canvasContext = canvas.getContext('2d');
 
