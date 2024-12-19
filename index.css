@@ -1,8 +1,6 @@
 html,
 body {
-  height: 100%;
   margin: 0;
-  background-color: rgb(24, 24, 24);
 }
 
 *,
@@ -31,13 +29,17 @@ pre {
   color: white;
 }
 
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(24, 24, 24);
+}
+
 #canvas {
   width: 100%;
-  height: 90%;
+  height: 100vh;
   display: block;
-  position: absolute;
-  bottom: 0;
-  padding: 0 32px;
-  background-color: rgb(24, 24, 24);
   overflow: hidden;
+  background-image: url('./assets/canvas_bg.jpg');
+  background-size: cover;
 }
