@@ -30,16 +30,86 @@ pre {
 }
 
 .wrapper {
+  min-width: 1280px;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  background-color: rgb(24, 24, 24);
+  background-color: rgb(20, 20, 20);
 }
 
 #canvas {
-  width: 100%;
+  width: inherit;
   height: 100vh;
   display: block;
   overflow: hidden;
   background-image: url('./assets/canvas_bg.jpg');
   background-size: cover;
+}
+
+.controls {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.input-file {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.input-file-btn {
+  max-width: 150px;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+  font-size: 16px;
+  vertical-align: middle;
+  color: rgb(255 255 255);
+  text-align: center;
+  border-radius: 4px;
+  background-color: #f17013;
+  line-height: 22px;
+  height: 40px;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  border: none;
+  margin: 0;
+  transition: background-color 0.2s;
+}
+.input-file-text {
+  padding: 0 10px;
+  line-height: 40px;
+  display: inline-block;
+}
+.input-file input[type='file'] {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  display: block;
+  width: 0;
+  height: 0;
+}
+
+/* Focus */
+.input-file input[type='file']:focus + .input-file-btn {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.4);
+}
+
+/* Hover/active */
+.input-file:hover .input-file-btn {
+  background-color: #ff8d3b;
+}
+.input-file:active .input-file-btn {
+  background-color: #e6660a;
+}
+
+/* Disabled */
+.input-file input[type='file']:disabled + .input-file-btn {
+  background-color: #eee;
 }

@@ -3,12 +3,14 @@ let audioSource;
 let analyser;
 
 const canvas = document.getElementById('canvas');
+const fileName = document.querySelector('.file-name');
 const canvasContext = canvas.getContext('2d');
 const background = new Image();
 background.src = './assets/canvas_bg.jpg';
 
 document.getElementById('audio-input').addEventListener('change', (event) => {
   const file = event.target.files[0];
+  fileName.innerHTML = file.name;
   audio.src = URL.createObjectURL(file);
   audio.load();
   audio.play();
@@ -87,7 +89,7 @@ function visualize(analyser) {
         progress,
         startColor,
         endColor,
-        0.8,
+        0.85,
       );
 
       // top right
